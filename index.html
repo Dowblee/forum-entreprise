@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forum Stages & Alternances – Entreprises présentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7f9;--surface:#fff;--ink:#17202b;--muted:#5b6674;--line:#dde1e7;--accent:#2447c9;--chip-l:92%;--chip-t:28%;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#10151c;--surface:#18202a;--ink:#eef1f5;--muted:#9aa5b3;--line:#2b3644;--accent:#7f9bff;--chip-l:22%;--chip-t:82%;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Inter,system-ui,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{padding:48px 0 24px}
+h1{font:800 clamp(2rem,6vw,3.4rem)/1.05 "Bricolage Grotesque",Inter,sans-serif;margin:0 0 12px;letter-spacing:-.02em}
+header p{margin:0;max-width:60ch;color:var(--muted);font-size:1.05rem}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:14px 0}
+.search{width:100%;padding:12px 14px;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.search:focus-visible,.fil:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.fil{font:500 .9rem Inter,sans-serif;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.fil[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.count{margin:18px 0 12px;color:var(--muted);font-size:.95rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;padding-bottom:56px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.top{display:flex;gap:14px;align-items:center}
+.logo{position:relative;flex:none;width:64px;height:64px;border-radius:8px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;overflow:hidden;font:800 1.15rem "Bricolage Grotesque",sans-serif;color:#6b7686}
+.logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:6px;background:#fff}
+h2{font:700 1.15rem/1.2 "Bricolage Grotesque",Inter,sans-serif;margin:0}
+.sector{margin:2px 0 0;color:var(--muted);font-size:.88rem;line-height:1.3}
+.desc{margin:0;font-size:.95rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
+.tag{font:500 .8rem Inter,sans-serif;padding:3px 10px;border-radius:999px;background:hsl(var(--h) 60% var(--chip-l));color:hsl(var(--h) 55% var(--chip-t))}
+.empty{grid-column:1/-1;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <h1 id="titre">Forum Stages &amp; Alternances</h1>
+  <p id="intro">Découvrez les entreprises présentes, ce qu’elles font et les filières qu’elles recherchent.</p>
+</header>
+<div class="bar"><div class="wrap">
+  <input class="search" id="q" type="search" placeholder="Rechercher une entreprise, un secteur, un métier…" aria-label="Rechercher">
+  <div class="filters" id="filters" role="group" aria-label="Filtrer par filière"></div>
+</div></div>
+<main class="wrap">
+  <p class="count" id="count" aria-live="polite"></p>
+  <div class="grid" id="list"></div>
+</main>
+<script>
+// À MODIFIER : nom complet de chaque filière (affiché au survol et dans les filtres) et couleur (0-360).
+const FILIERES = {
+  GCE:  {nom:"GCE",  hue:25},
+  SB:   {nom:"SB",   hue:200},
+  M3:   {nom:"M3",   hue:265},
+  GPSE: {nom:"GPSE", hue:165},
+  TEAM: {nom:"TEAM", hue:335},
+  MP:   {nom:"MP",   hue:120},
+  GI:   {nom:"GI",   hue:45}
+};
+const norm = s => String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const hue = c => (FILIERES[c] ? FILIERES[c].hue : 220);
+const nom = c => (FILIERES[c] ? FILIERES[c].nom : c);
+const $ = id => document.getElementById(id);
+let data = [], active = null;
+
+fetch("entreprises.json").then(r => r.json()).then(d => {
+  data = d.map(e => ({...e, f: String(e.specialites_concernees || "").split(",").map(s => s.trim()).filter(Boolean)}));
+  buildFilters(); render();
+}).catch(() => {
+  $("list").innerHTML = '<p class="empty">Impossible de charger entreprises.json. En local, ouvrez la page via un serveur (par exemple « python -m http.server ») ou publiez-la sur GitHub Pages.</p>';
+});
+
+function buildFilters(){
+  const codes = [...new Set(data.flatMap(e => e.f))].sort((a,b) => (Object.keys(FILIERES).indexOf(a)+99)%99 - (Object.keys(FILIERES).indexOf(b)+99)%99);
+  const box = $("filters");
+  box.innerHTML = '<button class="fil" data-c="" aria-pressed="true">Toutes les filières</button>' +
+    codes.map(c => `<button class="fil" data-c="${esc(c)}" aria-pressed="false" title="${esc(nom(c))}">${esc(nom(c))}</button>`).join("");
+  box.addEventListener("click", ev => {
+    const b = ev.target.closest(".fil"); if(!b) return;
+    active = b.dataset.c || null;
+    box.querySelectorAll(".fil").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    render();
+  });
+}
+
+function initials(n){ return n.replace(/\(.*\)/,"").trim().split(/\s+/).slice(0,2).map(w => w[0]).join("").toUpperCase(); }
+
+function render(){
+  const q = norm($("q").value.trim());
+  const rows = data.filter(e => (!active || e.f.includes(active)) &&
+    (!q || norm([e.entreprise, e.secteur_activite, e.descriptif_court].join(" ")).includes(q)));
+  $("count").textContent = rows.length + (rows.length > 1 ? " entreprises" : " entreprise") + (active ? " pour la filière " + nom(active) : "");
+  $("list").innerHTML = rows.length ? rows.map(e => `
+    <article class="card">
+      <div class="top">
+        <div class="logo"><span>${esc(initials(e.entreprise))}</span>${e.logo ? `<img src="${esc(e.logo)}" alt="Logo ${esc(e.entreprise)}" loading="lazy" onerror="this.remove()">` : ""}</div>
+        <div><h2>${esc(e.entreprise)}</h2><p class="sector">${esc(e.secteur_activite)}</p></div>
+      </div>
+      <p class="desc">${esc(e.descriptif_court)}</p>
+      <div class="tags">${e.f.map(c => `<span class="tag" style="--h:${hue(c)}" title="${esc(nom(c))}">${esc(nom(c))}</span>`).join("")}</div>
+    </article>`).join("") : '<p class="empty">Aucune entreprise ne correspond. Essayez un autre mot ou une autre filière.</p>';
+}
+$("q").addEventListener("input", render);
+</script>
+</body>
+</html>

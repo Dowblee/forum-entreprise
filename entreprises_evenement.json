@@ -1,0 +1,140 @@
+[
+  {
+    "entreprise": "ANDROS",
+    "secteur_activite": "Agroalimentaire",
+    "descriptif_court": "Transformation de fruits, fabrication de compotes, desserts lactés, jus de fruits and produits végétaux.",
+    "specialites_concernees": "GI, MP"
+  },
+  {
+    "entreprise": "ATI INDUSTRIES",
+    "secteur_activite": "Équipements industriels & Thermique",
+    "descriptif_court": "Conception et fabrication de fours d'incinération, de systèmes de traitement thermique et de filtration des gaz.",
+    "specialites_concernees": "TEAM, M3, MP"
+  },
+  {
+    "entreprise": "BAUDIN CHATEAUNEUF",
+    "secteur_activite": "BTP & Construction métallique",
+    "descriptif_court": "Réalisation de ponts métalliques, charpentes complexes, pylônes, équipements scéniques et rénovation de grands ouvrages.",
+    "specialites_concernees": "GCE, SB, M3"
+  },
+  {
+    "entreprise": "BOUYGUES CONSTRUCTION",
+    "secteur_activite": "Bâtiment & Travaux Publics",
+    "descriptif_court": "Construction de gratte-ciels, hôpitaux, tunnels, voies ferrées et grands projets d'infrastructures d'énergie.",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
+    "entreprise": "BTP CONSULTANTS",
+    "secteur_activite": "Contrôle technique & Audit BTP",
+    "descriptif_court": "Diagnostic de structures, contrôle de sécurité sur les chantiers, diagnostics thermiques et audits BIM (Building Information Modeling).",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
+    "entreprise": "BUREAU VERITAS",
+    "secteur_activite": "Inspection & Certification",
+    "descriptif_court": "Certification ISO, vérification de la conformité réglementaire des bâtiments, contrôle d'équipements industriels et d'émissions carbone.",
+    "specialites_concernees": "GCE, SB, M3, GPSE"
+  },
+  {
+    "entreprise": "CILAS",
+    "secteur_activite": "Laser & Optronique (Défense & Spatial)",
+    "descriptif_court": "Développement de lasers de puissance, télémètres pour véhicules blindés, optiques pour le Laser Mégajoule et la défense anti-drones.",
+    "specialites_concernees": "GPSE, M3, TEAM"
+  },
+  {
+    "entreprise": "COTEG",
+    "secteur_activite": "BTP & Génie civil",
+    "descriptif_court": "Construction de bâtiments collectifs, équipements publics, travaux de gros œuvre et maçonnerie générale.",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
+    "entreprise": "DAVRICOURT",
+    "secteur_activite": "Conseil en Ingénierie & Technologie",
+    "descriptif_court": "Conseil en écoconception, intégration de technologies durables dans l'industrie, optimisation des procédés de fabrication.",
+    "specialites_concernees": "M3, GPSE, TEAM, MP"
+  },
+  {
+    "entreprise": "EIFFAGE",
+    "secteur_activite": "BTP, Construction & Concessions",
+    "descriptif_court": "Construction de lignes à grande vitesse (LGV), viaducs (ex: Viaduc de Millau), infrastructures routières et éco-quartiers.",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
+    "entreprise": "EUROVIA (Vinci construction)",
+    "secteur_activite": "Infrastructures de transport & Travaux publics",
+    "descriptif_court": "Réfection de routes, aménagement urbain, pistes d'aéroports, tramways et recyclage des matériaux de chaussée.",
+    "specialites_concernees": "GCE"
+  },
+  {
+    "entreprise": "EXCENT",
+    "secteur_activite": "Ingénierie industrielle & Mécanique",
+    "descriptif_court": "Conception de lignes d'assemblage aéronautiques (Airbus), outillages mécaniques complexes et intégration robotique.",
+    "specialites_concernees": "M3, TEAM, MP"
+  },
+  {
+    "entreprise": "GTM (Vinci construction)",
+    "secteur_activite": "Bâtiment & Génie Civil",
+    "descriptif_court": "Construction de grands ensembles, ponts, barrages, réhabilitation d'ouvrages d'art et d'équipements culturels/sportifs.",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
+    "entreprise": "GSE",
+    "secteur_activite": "Immobilier d'entreprise & Clés en main",
+    "descriptif_court": "Conception et construction logistique clé en main, usines éco-responsables, centres de R&D et bureaux connectés.",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
+    "entreprise": "INEO EQUANS",
+    "secteur_activite": "Génie électrique & Énergie",
+    "descriptif_court": "Installation de réseaux électriques intelligents (Smart Grids), systèmes d'éclairage public connecté, signalisation ferroviaire et cybersécurité industrielle.",
+    "specialites_concernees": "GPSE, SB, TEAM"
+  },
+  {
+    "entreprise": "LEGENDRE CONSTRUCTION",
+    "secteur_activite": "BTP & Immobilier",
+    "descriptif_court": "Gros œuvre de logements, bureaux high-tech, génie civil d'infrastructures et réhabilitation thermique du bâti.",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
+    "entreprise": "MS4ALL",
+    "secteur_activite": "Simulation numérique & Modélisation",
+    "descriptif_court": "Développement de modèles mathématiques et simulations physiques/thermiques pour les procédés industriels et les matériaux avancés.",
+    "specialites_concernees": "GPSE, M3, TEAM"
+  },
+  {
+    "entreprise": "NGE",
+    "secteur_activite": "BTP & Travaux Publics",
+    "descriptif_court": "Creusement de tunnels (Métro Grand Paris Express), fondations profondes, terrassement et pose de réseaux de fibre optique.",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
+    "entreprise": "ROGER MARTIN",
+    "secteur_activite": "Terrassement & VRD",
+    "descriptif_court": "Travaux de terrassement de grande masse, aménagement de zones industrielles et réseaux d'assainissement urbain.",
+    "specialites_concernees": "GCE"
+  },
+  {
+    "entreprise": "SERVIER",
+    "secteur_activite": "Industrie Pharmaceutique",
+    "descriptif_court": "Recherche, développement et fabrication automatisée de médicaments (cardiologie, oncologie, maladies immuno-inflammatoires).",
+    "specialites_concernees": "GI, MP"
+  },
+  {
+    "entreprise": "SII",
+    "secteur_activite": "Services numériques & Systèmes embarqués",
+    "descriptif_court": "Développement de logiciels embarqués critiques (aéronautique/spatial), test d'applications et conseil en transformation digitale.",
+    "specialites_concernees": "GPSE"
+  },
+  {
+    "entreprise": "TOYOTA",
+    "secteur_activite": "Industrie Automobile",
+    "descriptif_court": "Assemblage de véhicules hybrides et électriques, optimisation Lean Manufacturing de la chaîne de production et développement de moteurs propres.",
+    "specialites_concernees": "TEAM, M3, MP, GPSE"
+  },
+  {
+    "entreprise": "VIVERIS",
+    "secteur_activite": "Ingénierie informatique & Systèmes embarqués",
+    "descriptif_court": "Conception de cartes électroniques, capteurs IoT industriels, logiciels de contrôle d'équipements médicaux et systèmes de communication de défense.",
+    "specialites_concernees": "GPSE"
+  }
+]
