@@ -67,7 +67,7 @@ const nom = c => (FILIERES[c] ? FILIERES[c].nom : c);
 const $ = id => document.getElementById(id);
 let data = [], active = null;
 
-fetch("entreprises.json").then(r => r.json()).then(d => {
+fetch("entreprises_evenement.json").then(r => r.json()).then(d => {
   data = d.map(e => ({...e, f: String(e.specialites_concernees || "").split(",").map(s => s.trim()).filter(Boolean)}));
   buildFilters(); render();
 }).catch(() => {
