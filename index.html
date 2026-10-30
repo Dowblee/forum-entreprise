@@ -67,7 +67,7 @@ const nom = c => (FILIERES[c] ? FILIERES[c].nom : c);
 const $ = id => document.getElementById(id);
 let data = [], active = null;
 
-fetch("entreprises_evenement.json").then(r => r.json()).then(d => {
+fetch("entreprises.json").then(r => r.json()).then(d => {
   data = d.map(e => ({...e, f: String(e.specialites_concernees || "").split(",").map(s => s.trim()).filter(Boolean)}));
   buildFilters(); render();
 }).catch(() => {
@@ -97,7 +97,7 @@ function render(){
   $("list").innerHTML = rows.length ? rows.map(e => `
     <article class="card">
       <div class="top">
-        <div class="logo"><span>${esc(initials(e.entreprise))}</span>${e.logo ? `<img src="${esc(e.logo)}" alt="Logo ${esc(e.entreprise)}" loading="lazy" onerror="this.remove()">` : ""}</div>
+        <div class="logo"><span>${esc(initials(e.entreprise))}</span>${e.logo ? `<img src="${esc(encodeURI(e.logo))}" alt="Logo ${esc(e.entreprise)}" loading="lazy" onerror="this.remove()">` : ""}</div>
         <div><h2>${esc(e.entreprise)}</h2><p class="sector">${esc(e.secteur_activite)}</p></div>
       </div>
       <p class="desc">${esc(e.descriptif_court)}</p>
