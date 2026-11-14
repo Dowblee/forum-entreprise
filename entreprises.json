@@ -13,6 +13,13 @@
     "specialites_concernees": "TEAM, M3, MP"
   },
   {
+    "entreprise": "AVL LMM",
+    "logo": "projet forum stage/Logo/AVL LMM.jpg",
+    "secteur_activite": "Ingénierie Automobile & Moyens d'essais",
+    "descriptif_court": "Conception, développement et réalisation de bancs d'essais moteurs, groupes motopropulseurs hybrides/électriques et systèmes de test pour l'industrie automobile.",
+    "specialites_concernees": "TEAM, M3, GPSE"
+  },
+  {
     "entreprise": "BAUDIN CHATEAUNEUF",
     "logo": "projet forum stage/Logo/BAUDIN CHATEAUNEUF.jpg",
     "secteur_activite": "BTP & Construction métallique",
@@ -20,11 +27,32 @@
     "specialites_concernees": "GCE, SB, M3"
   },
   {
+    "entreprise": "BEG INGENIERIE",
+    "logo": "projet forum stage/Logo/BEG_ING.jpg",
+    "secteur_activite": "Ingénierie & Construction clé en main",
+    "descriptif_court": "Conception et réalisation de bâtiments industriels, logistiques, tertiaires et commerciaux avec une approche d'écoconception.",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
     "entreprise": "BOUYGUES CONSTRUCTION",
     "logo": "projet forum stage/Logo/BOUYGUES CONSTRUCTION.png",
     "secteur_activite": "Bâtiment & Travaux Publics",
     "descriptif_court": "Construction de gratte-ciels, hôpitaux, tunnels, voies ferrées et grands projets d'infrastructures d'énergie.",
     "specialites_concernees": "GCE, SB"
+  },
+  {
+    "entreprise": "BPI France",
+    "logo": "projet forum stage/Logo/BPI FRANCE.jpg",
+    "secteur_activite": "Financement & Accompagnement d'entreprises",
+    "descriptif_court": "Banque publique d'investissement accompagnant les startups, PME et ETI dans leurs projets d'innovation, d'investissement et de développement industriel.",
+    "specialites_concernees": "GI, MP, TEAM, M3, GPSE, GCE, SB"
+  },
+  {
+    "entreprise": "BRIAND",
+    "logo": "projet forum stage/Logo/BRIAND.jpg",
+    "secteur_activite": "Construction métallique, bois & béton",
+    "descriptif_court": "Conception, fabrication et pose de charpentes métalliques, structures bois et béton préfabriqué pour bâtiments industriels, logistiques et tertiaires.",
+    "specialites_concernees": "GCE, SB, M3"
   },
   {
     "entreprise": "BTP CONSULTANTS",
@@ -48,6 +76,12 @@
     "specialites_concernees": "GPSE, M3, TEAM"
   },
   {
+    "entreprise": "COLAS",
+    "secteur_activite": "Infrastructures de transport & Travaux publics",
+    "descriptif_court": "Construction et entretien d'infrastructures routières, ferroviaires, aéroportuaires, aménagements urbains et production de matériaux de construction.",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
     "entreprise": "COTEG",
     "logo": "projet forum stage/Logo/COTEG.jpg",
     "secteur_activite": "BTP & Génie civil",
@@ -60,6 +94,12 @@
     "secteur_activite": "Conseil en Ingénierie & Technologie",
     "descriptif_court": "Conseil en écoconception, intégration de technologies durables dans l'industrie, optimisation des procédés de fabrication.",
     "specialites_concernees": "M3, GPSE, TEAM, MP"
+  },
+  {
+    "entreprise": "EDF ( partenariat)",
+    "secteur_activite": "Énergie & Production d'électricité",
+    "descriptif_court": "Production, transport et fourniture d'électricité bas-carbone (nucléaire, hydraulique, énergies renouvelables) et services d'efficacité énergétique.",
+    "specialites_concernees": "TEAM, GPSE, M3, GCE, SB, MP"
   },
   {
     "entreprise": "EIFFAGE",
@@ -104,11 +144,31 @@
     "specialites_concernees": "GPSE, SB, TEAM"
   },
   {
+    "entreprise": "IRIS CONSEIL",
+    "logo": "projet forum stage/Logo/IRIS CONSEIL.pdf",
+    "secteur_activite": "Conseil & Ingénierie BTP / Infrastructures",
+    "descriptif_court": "Bureau d'études et de conseil spécialisé en ingénierie des infrastructures, aménagement urbain, VRD, hydraulique et environnement.",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
     "entreprise": "LEGENDRE CONSTRUCTION",
     "logo": "projet forum stage/Logo/LEGENDRE CONSTRUCTION.png",
     "secteur_activite": "BTP & Immobilier",
     "descriptif_court": "Gros œuvre de logements, bureaux high-tech, génie civil d'infrastructures et réhabilitation thermique du bâti.",
     "specialites_concernees": "GCE, SB"
+  },
+  {
+    "entreprise": "LSDH",
+    "logo": "projet forum stage/Logo/LSDH.jpg",
+    "secteur_activite": "Agroalimentaire & Conditionnement liquide",
+    "descriptif_court": "Laiterie de Saint-Denis-de-l'Hôtel : élaboration et conditionnement de liquides alimentaires (laits, jus de fruits, boissons végétales, soupes) et végétaux prêts à l'emploi.",
+    "specialites_concernees": "GI, MP"
+  },
+  {
+    "entreprise": "MBDA",
+    "secteur_activite": "Aéronautique, Défense & Systèmes de missiles",
+    "descriptif_court": "Conception et production de systèmes de missiles et de défense aérienne intégrés, alliant mécanique, propulsion, électronique embarquée et simulation.",
+    "specialites_concernees": "M3, TEAM, GPSE, MP, GI"
   },
   {
     "entreprise": "MS4ALL",
@@ -125,6 +185,13 @@
     "specialites_concernees": "GCE, SB"
   },
   {
+    "entreprise": "PROCTER AND GAMBLE",
+    "logo": "projet forum stage/Logo/PROCTER AND GAMBLE.png",
+    "secteur_activite": "Biens de grande consommation & Cosmétique",
+    "descriptif_court": "Fabrication et conditionnement de produits d'hygiène, de beauté et d'entretien (site de production cosmétique notamment en région Centre-Val de Loire).",
+    "specialites_concernees": "GI, MP, M3"
+  },
+  {
     "entreprise": "ROGER MARTIN",
     "logo": "projet forum stage/Logo/ROGER MARTIN.png",
     "secteur_activite": "Terrassement & VRD",
@@ -132,7 +199,14 @@
     "specialites_concernees": "GCE"
   },
   {
+    "entreprise": "SAINT GOBAIN",
+    "secteur_activite": "Matériaux de construction & Industrie",
+    "descriptif_court": "Conception, production et distribution de matériaux et solutions haute performance pour l'habitat durable, le bâtiment et l'industrie (vitrage, isolation, mortiers).",
+    "specialites_concernees": "MP, SB, GCE, M3, TEAM, GI"
+  },
+  {
     "entreprise": "SERVIER",
+    "logo": "projet forum stage/Logo/SERVIER.pdf",
     "secteur_activite": "Industrie Pharmaceutique",
     "descriptif_court": "Recherche, développement et fabrication automatisée de médicaments (cardiologie, oncologie, maladies immuno-inflammatoires).",
     "specialites_concernees": "GI, MP"
@@ -144,10 +218,23 @@
     "specialites_concernees": "GPSE"
   },
   {
+    "entreprise": "SOGEA (Vinci Construction)",
+    "secteur_activite": "Bâtiment, Génie Civil & Hydraulique",
+    "descriptif_court": "Réalisation de travaux de bâtiment, génie civil, ouvrages d'art, canalisations et infrastructures hydrauliques.",
+    "specialites_concernees": "GCE, SB"
+  },
+  {
     "entreprise": "TOYOTA",
+    "logo": "projet forum stage/Logo/TOYOTA.png",
     "secteur_activite": "Industrie Automobile",
     "descriptif_court": "Assemblage de véhicules hybrides et électriques, optimisation Lean Manufacturing de la chaîne de production et développement de moteurs propres.",
     "specialites_concernees": "TEAM, M3, MP, GPSE"
+  },
+  {
+    "entreprise": "VINCI ENERGIES",
+    "secteur_activite": "Énergie, Industrie & Technologies de l'information",
+    "descriptif_court": "Ingénierie, réalisation et maintenance d'infrastructures d'énergie, de réseaux électriques, d'automatismes industriels et de systèmes numériques.",
+    "specialites_concernees": "GPSE, TEAM, SB, M3"
   },
   {
     "entreprise": "VIVERIS",
@@ -155,5 +242,12 @@
     "secteur_activite": "Ingénierie informatique & Systèmes embarqués",
     "descriptif_court": "Conception de cartes électroniques, capteurs IoT industriels, logiciels de contrôle d'équipements médicaux et systèmes de communication de défense.",
     "specialites_concernees": "GPSE"
+  },
+  {
+    "entreprise": "VULCAIN",
+    "logo": "projet forum stage/Logo/VULCAIN.png",
+    "secteur_activite": "Conseil en Ingénierie (Énergie & Industrie)",
+    "descriptif_court": "Conseil opérationnel et accompagnement de grands projets industriels dans les secteurs de l'énergie (nucléaire, renouvelables), de l'environnement et de la pharmacie.",
+    "specialites_concernees": "TEAM, M3, GPSE, MP, GCE"
   }
 ]
