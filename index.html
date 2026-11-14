@@ -34,13 +34,33 @@ h2{font:700 1.15rem/1.2 "Bricolage Grotesque",Inter,sans-serif;margin:0}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
 .tag{font:500 .8rem Inter,sans-serif;padding:3px 10px;border-radius:999px;background:hsl(var(--h) 60% var(--chip-l));color:hsl(var(--h) 55% var(--chip-t))}
 .empty{grid-column:1/-1;color:var(--muted)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.tabs a{padding:9px 18px;border-radius:999px;font:500 .95rem Inter,sans-serif;color:#fff;text-decoration:none;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4)}
+.tabs a[aria-current=page]{background:#fff;color:#2b3a8f;border-color:#fff}
+.tabs a:focus-visible{outline:3px solid #fff;outline-offset:2px}
+button.logo{padding:0;cursor:zoom-in}
+button.logo:disabled{cursor:default}
+button.logo:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.plan{padding-bottom:56px}
+.plan h2{font:800 1.6rem/1.2 "Bricolage Grotesque",Inter,sans-serif;margin:28px 0 6px}
+.zoombar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.zoombar a{margin-left:auto;color:var(--accent);font-size:.9rem}
+.map{overflow:auto;max-height:75vh;background:#fff;border:1px solid var(--line);border-radius:10px;touch-action:pan-x pan-y pinch-zoom}
+.map img{display:block;max-width:none;height:auto;width:100%}
+dialog{border:0;border-radius:14px;padding:22px;width:min(92vw,560px);background:#fff;color:#17202b}
+dialog::backdrop{background:rgba(10,14,25,.72)}
+dialog img{display:block;max-width:100%;max-height:68vh;margin:0 auto;object-fit:contain}
+dialog p{margin:14px 0 0;text-align:center;font:700 1.1rem "Bricolage Grotesque",Inter,sans-serif}
+dialog .x{position:absolute;top:6px;right:10px;width:44px;height:44px;font-size:1.9rem;line-height:1;background:none;border:0;color:#17202b;cursor:pointer}
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
   <h1 id="titre">Forum Stages &amp; Alternances</h1>
   <p id="intro">Découvrez les entreprises présentes, ce qu’elles font et les filières qu’elles recherchent.</p>
+  <nav class="tabs" aria-label="Sections"><a href="#entreprises" data-v="entreprises">Entreprises</a><a href="#plan" data-v="plan">Plan de l’événement</a></nav>
 </div></header>
+<div id="v-entreprises">
 <div class="bar"><div class="wrap">
   <input class="search" id="q" type="search" placeholder="Rechercher une entreprise, un secteur, un métier…" aria-label="Rechercher">
   <div class="filters" id="filters" role="group" aria-label="Filtrer par filière"></div>
@@ -49,6 +69,25 @@ h2{font:700 1.15rem/1.2 "Bricolage Grotesque",Inter,sans-serif;margin:0}
   <p class="count" id="count" aria-live="polite"></p>
   <div class="grid" id="list"></div>
 </main>
+</div>
+<section id="v-plan" class="wrap plan" hidden>
+  <h2>Plan de l’événement</h2>
+  <p class="count">Salles, hall, box, amphithéâtres et K’Fet : repérez où trouver chaque entreprise. Faites glisser pour vous déplacer et utilisez les boutons pour zoomer.</p>
+  <div class="zoombar">
+    <button type="button" class="fil" id="zo" aria-label="Dézoomer">−</button>
+    <button type="button" class="fil" id="zr">Tout voir</button>
+    <button type="button" class="fil" id="zi" aria-label="Zoomer">+</button>
+    <a href="plan-evenement.png" target="_blank" rel="noopener">Ouvrir l’image seule</a>
+  </div>
+  <div class="map" tabindex="0" aria-label="Plan de l’événement, zone défilante">
+    <img id="plan" src="plan-evenement.png" alt="Plan de l’événement : salles F 022 et F 023, hall, box, amphithéâtres, piano et K’Fet">
+  </div>
+</section>
+<dialog id="lb" aria-label="Logo agrandi">
+  <button type="button" class="x" aria-label="Fermer">×</button>
+  <img id="lbi" alt="">
+  <p id="lbc"></p>
+</dialog>
 <script>
 // À MODIFIER : nom complet de chaque filière (affiché au survol et dans les filtres) et couleur (0-360).
 const FILIERES = {
@@ -97,7 +136,7 @@ function render(){
   $("list").innerHTML = rows.length ? rows.map(e => `
     <article class="card" style="--h:${hue(e.f[0])}">
       <div class="top">
-        <div class="logo"><span>${esc(initials(e.entreprise))}</span>${e.logo ? `<img src="${esc(encodeURI(e.logo))}" alt="Logo ${esc(e.entreprise)}" loading="lazy" onerror="this.remove()">` : ""}</div>
+        <${e.logo ? 'button type="button" data-n="' + esc(e.entreprise) + '" aria-label="Agrandir le logo de ' + esc(e.entreprise) + '"' : "div"} class="logo"><span>${esc(initials(e.entreprise))}</span>${e.logo ? `<img src="${esc(encodeURI(e.logo))}" alt="Logo ${esc(e.entreprise)}" loading="lazy" onerror="this.parentNode.disabled=true;this.remove()">` : ""}</${e.logo ? "button" : "div"}>
         <div><h2>${esc(e.entreprise)}</h2><p class="sector">${esc(e.secteur_activite)}</p></div>
       </div>
       <p class="desc">${esc(e.descriptif_court)}</p>
@@ -105,6 +144,33 @@ function render(){
     </article>`).join("") : '<p class="empty">Aucune entreprise ne correspond. Essayez un autre mot ou une autre filière.</p>';
 }
 $("q").addEventListener("input", render);
+
+// Logo en grand
+const lb = $("lb");
+$("list").addEventListener("click", ev => {
+  const l = ev.target.closest("button.logo"), im = l && l.querySelector("img");
+  if(!im) return;
+  $("lbi").src = im.src; $("lbi").alt = im.alt; $("lbc").textContent = l.dataset.n;
+  lb.showModal();
+});
+lb.addEventListener("click", ev => { if(ev.target === lb || ev.target.closest(".x")) lb.close(); });
+
+// Zoom du plan (1 = image entière ; sur téléphone on démarre plus gros pour lire les textes)
+const planImg = $("plan"); let z = 1;
+function setZ(v){ z = Math.min(4, Math.max(1, v)); planImg.style.width = z * 100 + "%"; }
+$("zi").onclick = () => setZ(z * 1.4);
+$("zo").onclick = () => setZ(z / 1.4);
+$("zr").onclick = () => setZ(1);
+if(innerWidth < 700) setZ(2.5);
+
+// Onglets (adresse #entreprises ou #plan)
+function show(){
+  const v = location.hash === "#plan" ? "plan" : "entreprises";
+  $("v-entreprises").hidden = v !== "entreprises";
+  $("v-plan").hidden = v !== "plan";
+  document.querySelectorAll(".tabs a").forEach(a => a.setAttribute("aria-current", a.dataset.v === v ? "page" : "false"));
+}
+addEventListener("hashchange", show); show();
 </script>
 </body>
 </html>
