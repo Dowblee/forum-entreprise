@@ -182,12 +182,18 @@ const PLANS = {
     w:"M12 8H388M12 8V445M388 8V445M12 445H45M90 445H205M255 445H388",t:"M53 130H275M53 130V280",
     st:[...BX.map(x=>[H(x,40)]),...BX.map(x=>[H(x,92)]),[[260,43,34,70,1]],...col(75),...col(146),...col(217),[V(293,185)],[V(298,288),V(298,340)],[[118,451,40,16]],[[162,451,40,16]]],
     lb:{8:"EDF"},tx:[["HALL",148,22],["BOX ×8",130,77],["Amphi",63,470],["Amphi",252,470]],
-    pc:[[107,137],[204,137],[329,165],[60,334],[204,334],[156,486]]}
+    pc:[[107,137],[204,137],[329,165],[60,334],[204,334],[156,486]]},
+  kfet:{nom:"K’Fet",p:"KFET",vb:"8 40 305 525",mw:340,
+    w:"M16 83H52V96M55 165V489M260 108V489M262 107H306",
+    t:"M219 216H245M219 276H245M219 338H245M219 398H245M70 218H102",
+    x:'<rect x="59" y="334" width="54" height="155" fill="#c4c8ce"/><rect x="55" y="489" width="205" height="76" fill="#c4c8ce"/><circle cx="85" cy="304" r="22" fill="none" stroke="#5b6674"/><path d="M85 282V326M63 304H107M69 288L101 320M101 288L69 320" stroke="#5b6674" stroke-width=".8"/>',
+    st:[[[82,49,59,34]],[[153,49,63,34]],[[222,109,22,48],[222,157,22,47]],[[222,225,22,45]],[[222,279,22,56]],[[222,336,22,56]],[[222,404,22,47]],[[117,453,46,22],[166,453,46,22]],[[63,222,77,56]],[[67,163,45,52]]],
+    tx:[["issue de",42,106],["secours",44,150],["KFET",136,306],["Machines à cafés",158,535]],pc:[[260,98]]}
 };
 function drawPlan(k){
   const P = PLANS[k], by = {};
   data.forEach(e => { if(e.emplacement) by[e.emplacement] = e; });
-  let s = `<svg viewBox="${P.vb}" role="group" aria-label="${P.nom}"><path d="${P.w}" fill="none" stroke="#1d2733" stroke-width="4" stroke-linecap="square"/>` + (P.t ? `<path d="${P.t}" fill="none" stroke="#7b8794"/>` : "");
+  let s = `<svg viewBox="${P.vb}" style="max-width:${P.mw || 620}px" role="group" aria-label="${P.nom}"><path d="${P.w}" fill="none" stroke="#1d2733" stroke-width="4" stroke-linecap="square"/>` + (P.t ? `<path d="${P.t}" fill="none" stroke="#7b8794"/>` : "") + (P.x || "");
   (P.cafe||[]).forEach(([x,y]) => s += `<rect x="${x}" y="${y}" width="38" height="17" fill="#f1f3f6" stroke="#7b8794"/><text class="sm" x="${x+19}" y="${y+9}">café</text>`);
   (P.tx||[]).forEach(([t,x,y]) => s += `<text class="sm b" x="${x}" y="${y}">${t}</text>`);
   (P.pc||[]).forEach(([x,y]) => s += `<rect x="${x-11}" y="${y-7}" width="22" height="14" fill="#fff" stroke="#7b8794"/><text class="sm" x="${x}" y="${y+1}">PC</text>`);
