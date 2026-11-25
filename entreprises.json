@@ -176,7 +176,7 @@
   },
   {
     "entreprise": "IRIS CONSEIL",
-    "logo": "img/logos/IRIS_CONSEIL.pdf",
+    "logo": "img/logos/IRIS_CONSEIL.jpg",
     "secteur_activite": "Conseil & Ingénierie BTP / Infrastructures",
     "descriptif_court": "Bureau d'études et de conseil spécialisé en ingénierie des infrastructures, aménagement urbain, VRD, hydraulique et environnement.",
     "specialites_concernees": "GI"
@@ -246,7 +246,7 @@
   },
   {
     "entreprise": "SERVIER",
-    "logo": "img/logos/SERVIER.pdf",
+    "logo": "img/logos/SERVIER.jpg",
     "secteur_activite": "Industrie Pharmaceutique",
     "descriptif_court": "Recherche, développement et fabrication automatisée de médicaments (cardiologie, oncologie, maladies immuno-inflammatoires).",
     "specialites_concernees": "GI, MP"
