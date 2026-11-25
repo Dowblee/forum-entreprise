@@ -234,6 +234,13 @@
     "specialites_concernees": "MP, GCE, SB, GI"
   },
   {
+    "entreprise": "SEDGWICK",
+    "logo": "projet forum stage/Logo/SEDGWICK.png",
+    "secteur_activite": "Gestion de sinistres, Expertise & Conseil en risques",
+    "descriptif_court": "Expertise technique après sinistre, évaluation des dommages matériels et industriels, gestion des risques et conseil en ingénierie pour les assurances et entreprises.",
+    "specialites_concernees": "GCE, SB, GPSE"
+  },
+  {
     "entreprise": "SERVIER",
     "logo": "projet forum stage/Logo/SERVIER.pdf",
     "secteur_activite": "Industrie Pharmaceutique",
@@ -251,6 +258,13 @@
     "secteur_activite": "Bâtiment, Génie Civil & Hydraulique",
     "descriptif_court": "Réalisation de travaux de bâtiment, génie civil, ouvrages d'art, canalisations et infrastructures hydrauliques.",
     "specialites_concernees": "GCE, SB"
+  },
+  {
+    "entreprise": "THALES",
+    "logo": "projet forum stage/Logo/THALES.jpg",
+    "secteur_activite": "Aéronautique, Spatial, Défense, Cybersécurité & Identité numérique",
+    "descriptif_court": "Conception et développement de systèmes électroniques critiques, avionique, satellites, radars, cybersécurité et solutions numériques sécurisées.",
+    "specialites_concernees": "TEAM, GPSE, M3, MP"
   },
   {
     "entreprise": "TOYOTA",
