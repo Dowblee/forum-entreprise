@@ -212,7 +212,7 @@ function showPlan(k){
   cur = k;
   $("pltabs").querySelectorAll(".fil").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.k === k)));
   $("pl").innerHTML = k === "all"
-    ? '<img src="plan-evenement.png" alt="Plan général de l’événement, avec la K’Fet" style="width:100%;display:block"><p><a href="plan-evenement.png" target="_blank" rel="noopener">Ouvrir l’image seule</a></p>'
+    ? '<img src="img/plan-evenement.png" alt="Plan général de l’événement, avec la K’Fet" style="width:100%;display:block"><p><a href="plan-evenement.png" target="_blank" rel="noopener">Ouvrir l’image seule</a></p>'
     : drawPlan(k);
   $("pinfo").hidden = k === "all";
   mark();
