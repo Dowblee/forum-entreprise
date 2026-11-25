@@ -64,9 +64,12 @@ dialog .x{position:absolute;top:6px;right:10px;width:44px;height:44px;font-size:
 .pinfo{margin-top:12px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
 .pinfo .tags{margin-top:8px}
 .loc{align-self:flex-start;font:500 .85rem Inter,sans-serif;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:999px;padding:5px 12px;cursor:pointer}
+#dots{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.bar{background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 </style>
 </head>
 <body>
+<canvas id="dots" aria-hidden="true"></canvas>
 <header class="hero"><div class="wrap">
   <h1 id="titre">Forum Stages &amp; Alternances</h1>
   <p id="intro">Découvrez les entreprises présentes, ce qu’elles font et les filières qu’elles recherchent.</p>
@@ -243,6 +246,57 @@ function show(){
   document.querySelectorAll(".tabs a").forEach(a => a.setAttribute("aria-current", a.dataset.v === v ? "page" : "false"));
 }
 addEventListener("hashchange", show); show();
+</script>
+<script>
+// Fond de points interactif (discret)
+(() => {
+  const c = document.getElementById("dots"), x = c.getContext("2d");
+  const dark = matchMedia("(prefers-color-scheme: dark)");
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const G = 36, R = 100;
+  let W, H, dots = [], m = {x: -999, y: -999};
+  const pal = () => dark.matches
+    ? {base: [255,255,255], hot: [127,155,255], a0: .10, a1: .35}
+    : {base: [36,71,201],   hot: [36,71,201],   a0: .13, a1: .40};
+  function init(){
+    W = innerWidth; H = innerHeight;
+    c.width = W * dpr; c.height = H * dpr;
+    x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    dots = [];
+    for(let i = G/2; i < W; i += G) for(let j = G/2; j < H; j += G) dots.push({hx:i, hy:j, x:i, y:j, vx:0, vy:0});
+  }
+  function tick(){
+    x.clearRect(0, 0, W, H);
+    const p = pal();
+    for(const d of dots){
+      const dx = d.x - m.x, dy = d.y - m.y, dist = Math.hypot(dx, dy) || 1;
+      if(dist < R){ const f = (1 - dist/R) * .45; d.vx += dx/dist*f; d.vy += dy/dist*f; }
+      d.vx += (d.hx - d.x) * .08; d.vy += (d.hy - d.y) * .08;
+      d.vx *= .88; d.vy *= .88;
+      d.x += d.vx; d.y += d.vy;
+      const k = Math.max(0, 1 - dist/R);
+      const r = Math.round(p.base[0] + (p.hot[0]-p.base[0])*k), g = Math.round(p.base[1] + (p.hot[1]-p.base[1])*k), b = Math.round(p.base[2] + (p.hot[2]-p.base[2])*k);
+      x.beginPath();
+      x.arc(d.x, d.y, 1.2 + k*.9, 0, 6.283);
+      x.fillStyle = "rgba(" + r + "," + g + "," + b + "," + (p.a0 + k*(p.a1 - p.a0)).toFixed(2) + ")";
+      x.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  if(!calm){
+    addEventListener("pointermove", e => { m.x = e.clientX; m.y = e.clientY; });
+    addEventListener("pointerdown", e => {
+      for(const d of dots){
+        const dx = d.x - e.clientX, dy = d.y - e.clientY, dist = Math.hypot(dx, dy) || 1;
+        if(dist < 160){ const f = (1 - dist/160) * 3; d.vx += dx/dist*f; d.vy += dy/dist*f; }
+      }
+    });
+    document.documentElement.addEventListener("mouseleave", () => { m.x = m.y = -999; });
+  }
+  addEventListener("resize", init);
+  init(); tick();
+})();
 </script>
 </body>
 </html>
